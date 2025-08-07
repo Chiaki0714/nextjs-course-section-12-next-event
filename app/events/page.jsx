@@ -1,7 +1,14 @@
-export default function EventsPage() {
+import EventList from '@/components/events/EventList';
+import EventSearch from '@/components/events/EventSearch';
+import { getAllEvents } from '@/lib/eventsFetch';
+
+export default async function EventsPage() {
+  const allEvents = await getAllEvents();
+
   return (
-    <main>
-      <h1>Event Page</h1>
-    </main>
+    <>
+      <EventSearch />
+      <EventList events={allEvents} />
+    </>
   );
 }

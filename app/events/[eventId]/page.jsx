@@ -1,7 +1,53 @@
-export default function EventDetailPage() {
+import { getEventById } from '@/lib/eventsFetch';
+import { notFound } from 'next/navigation';
+
+import styles from './page.module.css';
+import { formatAddress, formatDate } from '@/lib/fotmat';
+
+import DateIcon from '@/components/icons/date-icon';
+import AddressIcon from '@/components/icons/adress-icon';
+
+export default async function EventDetailPage({ params }) {
+  const { eventId } = await params;
+  const eventItem = getEventById(eventId);
+  if (!eventItem) {
+    notFound();
+  }
+  const humanReadableDate = formatDate(eventItem.date);
+  const addressText = formatAddress(eventItem.location);
+
   return (
-    <main>
-      <h1>Event Detail Page</h1>
-    </main>
+    <>
+      <section className={styles.summary}>
+        <h1>{eventItem.title}</h1>
+      </section>
+
+      <section className={styles.logistics}>
+        <div className={styles.image}>
+          <img src={`/${eventItem.image}`} alt={eventItem.imageAlt} />
+        </div>
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <span className={styles.icon}>
+              <DateIcon />
+            </span>
+            <span>
+              <time>{humanReadableDate}</time>
+            </span>
+          </li>
+          <li className={styles.item}>
+            <span className={styles.icon}>
+              <AddressIcon />
+            </span>
+            <span>
+              <time>{addressText}</time>
+            </span>
+          </li>
+        </ul>
+      </section>
+      <section className={styles.content}>
+        <p>{eventItem.description}</p>
+      </section>
+    </>
   );
 }

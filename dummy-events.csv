@@ -1,0 +1,4 @@
+id,title,description,location,date,image,isFeatured
+e1,Programming for everyone,"Everyone can learn to code! Yes, everyone! In this live event, we are going to go through all the key basics and get you started with programming as well.","Somestreet 25, 12345 San Somewhereo",2021-05-12,images/coding-event.jpg,false
+e2,Networking for introverts,"We know: Networking is no fun if you are an introvert person. That's why we came up with this event - it'll be so much easier. Promised!","New Wall Street 5, 98765 New Work",2021-05-30,images/introvert-event.jpg,true
+e3,Networking for extroverts,"You probably need no help with networking in general. But focusing your energy correctly - that is something where most people can improve.","My Street 12, 10115 Broke City",2022-04-10,images/extrovert-event.jpg,true

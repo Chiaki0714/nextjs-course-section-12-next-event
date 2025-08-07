@@ -1,5 +1,9 @@
+import EventList from '@/components/events/EventList';
+import { getAllEvents, getFeaturedEvents } from '@/lib/eventsFetch';
 import Image from 'next/image';
 
-export default function Home() {
-  return <h1>Home</h1>;
+export default async function Home() {
+  const featuredEvents = await getFeaturedEvents();
+
+  return <EventList events={featuredEvents} />;
 }

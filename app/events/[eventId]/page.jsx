@@ -9,7 +9,7 @@ import AddressIcon from '@/components/icons/adress-icon';
 
 export default async function EventDetailPage({ params }) {
   const { eventId } = await params;
-  const eventItem = getEventById(eventId);
+  const eventItem = await getEventById(eventId);
   if (!eventItem) {
     notFound();
   }

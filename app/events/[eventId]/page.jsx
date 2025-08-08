@@ -6,6 +6,16 @@ import { formatAddress, formatDate } from '@/lib/fotmat';
 
 import DateIcon from '@/components/icons/date-icon';
 import AddressIcon from '@/components/icons/adress-icon';
+import Image from 'next/image';
+
+export async function generateMetadata({ params }) {
+  const event = await getEventById(params.eventId);
+
+  return {
+    title: event.title,
+    description: event.description,
+  };
+}
 
 export default async function EventDetailPage({ params }) {
   const { eventId } = await params;
@@ -24,7 +34,13 @@ export default async function EventDetailPage({ params }) {
 
       <section className={styles.logistics}>
         <div className={styles.image}>
-          <img src={`/${eventItem.image}`} alt={eventItem.imageAlt} />
+          <Image
+            src={`/${eventItem.image}`}
+            alt={eventItem.title}
+            sizes='(min-width: 768px) 20rem, 10rem'
+            fill
+            priority
+          />
         </div>
         <ul className={styles.list}>
           <li className={styles.item}>

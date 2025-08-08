@@ -4,9 +4,21 @@ import Button from '@/components/ui/Button';
 import { formatDate } from '@/lib/fotmat';
 import EventList from '@/components/events/EventList';
 
+export async function generateMetadata({ params }) {
+  const [year, month] = (await params).eventSlug ?? [];
+
+  return {
+    title: 'Filtered events',
+    description: `All events for ${month}/${year}.`,
+  };
+}
+
 export default async function FilteredEventsPage({ params }) {
-  const slug = (await params.eventSlug) ?? [];
-  const [year, month] = slug;
+  //   const slug = (await params.eventSlug) ?? [];
+  //   const [year, month] = slug;
+  //   const awaitedParams = await params;
+  //   const [year, month] = awaitedParams.eventSlug;
+  const [year, month] = (await params).eventSlug ?? [];
   const numYear = +year;
   const numMonth = +month;
 

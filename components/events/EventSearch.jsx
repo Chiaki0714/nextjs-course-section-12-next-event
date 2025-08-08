@@ -8,11 +8,11 @@ import { useRouter } from 'next/navigation';
 export default function EventSearch() {
   const [selectedYear, setSelectedYear] = useState('2021');
   const [selectedMonth, setSelectedMonth] = useState('1');
-  const router = useRouter;
+  const router = useRouter();
 
   function hanlderSubmit(event) {
-    e.preventDefault();
-    router.push(`/events/${year}/${month}`);
+    event.preventDefault();
+    router.push(`/events/${selectedYear}/${selectedMonth}`);
   }
 
   return (
@@ -23,7 +23,7 @@ export default function EventSearch() {
           <select
             id='year'
             value={selectedYear}
-            onChange={e => setSelectedYear(e.target.value)}
+            onChange={event => setSelectedYear(event.target.value)}
           >
             <option value='2021'>2021</option>
             <option value='2022'>2022</option>
@@ -34,7 +34,7 @@ export default function EventSearch() {
           <select
             id='month'
             value={selectedMonth}
-            onChange={e => setSelectedMonth(e.target.value)}
+            onChange={event => setSelectedMonth(event.target.value)}
           >
             <option value='1'>January</option>
             <option value='2'>February</option>
